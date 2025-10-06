@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   {
@@ -29,13 +31,21 @@ const menuItems = [
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const router = useRouter();
 
   return (
     <header className="w-full bg-white text-blue-900 py-4 shadow-md fixed top-0 left-0 z-50">
       <div className="container mx-auto flex justify-between items-center px-6">
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-blue-700">My App</h1>
-
+        <div className="w-24 h-12 cursor-pointer" onClick={() => router.push("/")}>
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={50}
+            height={50}
+            className="object-cover"
+          />
+        </div>
         {/* Navigation */}
         <nav className="flex items-center space-x-8">
           {menuItems.map((menu) => (
@@ -83,12 +93,12 @@ export default function Header() {
             >
               Log In
             </Link>
-            <Link
+            {/* <Link
               href="/signup"
               className="px-5 py-2 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800"
             >
               Sign Up
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </div>
