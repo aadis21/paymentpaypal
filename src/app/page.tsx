@@ -16,7 +16,7 @@ export default function Home() {
       <SendPaymentsWay />
       <GetPaid />
       <AboutSecurity />
-      <JoinMillions />
+      {/* <JoinMillions /> */}
      
      
     </div>

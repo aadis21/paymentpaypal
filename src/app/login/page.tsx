@@ -8,67 +8,78 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    alert("Login submitted!");
+    // TODO: handle login
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <div className="min-h-screen w-full flex items-center justify-center bg-slate-50 px-4 py-10">
+      <div className="w-full max-w-[420px] rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-8 sm:p-10">
+        {/* Brand header */}
         <div className="flex flex-col items-center mb-6">
           <Image
             src="/logo.png"
-            alt="PayPal Logo"
-            className="w-16 h-16 mb-2"
-            width={64}
-            height={64}
+            alt="Brand logo"
+            width={112}
+            height={36}
+            className="h-9 w-auto"
+            priority
           />
-          <h1 className="text-2xl font-bold text-blue-700">PayPal Login</h1>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-5">
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700 mb-1" htmlFor="email">
-              Email Address
+            <label htmlFor="email" className="sr-only">
+              Email or mobile number
             </label>
             <input
               id="email"
-              type="email"
+              type="text"
+              inputMode="email"
+              autoComplete="username"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="you@example.com"
+              placeholder="Email or mobile number"
+              className="w-full h-12 px-4 rounded-md border border-slate-300 bg-white text-[15px]
+                         placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0070BA] focus:border-transparent"
             />
           </div>
+
           <div>
-            <label className="block text-gray-700 mb-1" htmlFor="password">
+            <label htmlFor="password" className="sr-only">
               Password
             </label>
             <input
               id="password"
               type="password"
+              autoComplete="current-password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Enter your password"
+              placeholder="Password"
+              className="w-full h-12 px-4 rounded-md border border-slate-300 bg-white text-[15px]
+                         placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0070BA] focus:border-transparent"
             />
           </div>
+
+          <div className="text-left">
+            <a
+              href="#"
+              className="text-sm font-medium text-[#0070BA] hover:underline"
+            >
+              Forgotten password?
+            </a>
+          </div>
+
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+            className="w-full h-12 rounded-full bg-[#0070BA] text-white text-[15px] font-semibold
+                       hover:bg-[#005EA6] active:bg-[#004B86] transition-colors"
           >
             Log In
           </button>
         </form>
-        {/* <div className="flex justify-between mt-4 text-sm text-blue-600">
-          <a href="#" className="hover:underline">
-            Forgot password?
-          </a>
-          <a href="#" className="hover:underline">
-            Sign Up
-          </a>
-        </div> */}
       </div>
     </div>
   );
